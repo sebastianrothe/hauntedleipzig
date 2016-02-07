@@ -1,4 +1,4 @@
-// Module Pattern via http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html and http://www.codeproject.com/Articles/247241/Javascript-Module-Pattern
+// Module Pattern via http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html and http://www.codeproject.com/Articles/247241/Javascript-Module-Pattern and https://javascriptweblog.wordpress.com/2010/04/22/the-module-pattern-in-a-nutshell/
 (function (gruseltourApp) {
     'use strict';
 
