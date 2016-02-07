@@ -80,7 +80,7 @@ jQuery(document).ready(function () {
     'use strict';
 
 	// only set dummyData for testing
-	window.gruseltourApp.init(true);
+	window.gruseltourApp.init();
 
 	window.gruseltourApp.renderFooterOnDatepicker();
 });
