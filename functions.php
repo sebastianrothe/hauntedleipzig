@@ -30,12 +30,13 @@ function load_datepicker_scripts() {
     }
 
     // Use `get_stylesheet_directoy_uri() if your script is inside your theme or child theme.
-    wp_register_script('dateutil-script', get_stylesheet_directory_uri() . '/js/dateutil.js');
-    wp_register_script('datepicker-script', get_stylesheet_directory_uri() . '/js/datepicker.js');
+    wp_register_script('datepicker-util-script', get_stylesheet_directory_uri() . '/js/datepicker/util.js');
+    wp_register_script('datepicker-dataprovider-script', get_stylesheet_directory_uri() . '/js/datepicker/dataprovider.js');
+    wp_register_script('datepicker-availability-script', get_stylesheet_directory_uri() . '/js/datepicker/availability.js');
 
     // Enqueue a script that has both jQuery (automatically registered by WordPress)
     // and my-script (registered earlier) as dependencies.
-    wp_enqueue_script('style-datepicker-script', get_stylesheet_directory_uri() . '/js/style-datepicker.js', array('jquery', 'jquery-ui-datepicker', 'dateutil-script', 'datepicker-script'), true);
+    wp_enqueue_script('style-datepicker-script', get_stylesheet_directory_uri() . '/js/datepicker/style-datepicker.js', array('jquery', 'jquery-ui-datepicker', 'datepicker-dataprovider-script', 'datepicker-dataprovider-script', 'datepicker-availability-script'), true);
 
     // TODO: add noscript with dates
 }
@@ -65,7 +66,7 @@ add_action('wp_footer', 'hide_form_values_scripts');
 
 function load_gruseltour_styles() {
     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/css/twentytwelve-dark.css');
-    wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/css/gruseltour.css');
+    wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/css/hauntedleipzig.css');
 }
 add_action('wp_enqueue_scripts', 'load_gruseltour_styles');
 
