@@ -23,32 +23,15 @@ function twentytwelve_content_nav( $nav_id ) {
 	<?php endif;
 }
 
-// OpenGraph Images for the frontpage, the ones from YOAST via the Post are not correct
-function add_ogimages_for_frontpage() {
-	if (!is_front_page()) {
-        return;
-    }
-    
-	$output = '<meta property="og:image" content="http://gruseltour-leipzig.de/wordpress/wp-content/uploads/2013/05/button-scary.png" /><meta property="og:image" content="http://gruseltour-leipzig.de/wordpress/wp-content/uploads/2014/05/cropped-grusel-poster-a3.jpg" /><meta property="og:image" content="http://gruseltour-leipzig.de/wordpress/wp-content/uploads/2014/06/1.jpg" />';
-	echo $output;	
-}
-add_action('wp_head','add_ogimages_for_frontpage');
-
-// function add_cookie_warning() {
-// 	$output = '<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent --><script type="text/javascript">    window.cookieconsent_options = {"message":"Diese Webseite benutzt Cookies, denn auf der dunklen Seite gibt es immer Kekse.","dismiss":"Okay","learnMore":"Mehr Informationen","link":"//gruseltour-leipzig.de/datenschutz/","theme":"dark-top"};</script><script type="text/javascript" src="//s3.amazonaws.com/cc.silktide.com/cookieconsent.latest.min.js"></script><!-- End Cookie Consent plugin -->';
-// 	echo $output;	
-// }
-// add_action('wp_head','add_cookie_warning');
-
 function load_datepicker_scripts() {
-	// Use `get_stylesheet_directoy_uri() if your script is inside your theme or child theme.
-	wp_register_script('dateutil-script', get_stylesheet_directory_uri() . '/js/dateutil.js');
-    wp_register_script('datepicker-script', get_stylesheet_directory_uri() . '/js/datepicker.js');
-
     // Let's enqueue a script only to be used on a specific page of the site
-    if (!is_page('anmeldung')) { 
+    if (!isBooking()) {
         return;
     }
+
+    // Use `get_stylesheet_directoy_uri() if your script is inside your theme or child theme.
+    wp_register_script('dateutil-script', get_stylesheet_directory_uri() . '/js/dateutil.js');
+    wp_register_script('datepicker-script', get_stylesheet_directory_uri() . '/js/datepicker.js');
 
     // Enqueue a script that has both jQuery (automatically registered by WordPress)
     // and my-script (registered earlier) as dependencies.
@@ -62,10 +45,11 @@ add_action('wp_footer', 'load_datepicker_scripts');
  * change display of values after form submit
  */
 function isPageWithForm() {
-	return is_page('anmeldung') 
-        || is_page('wave-gotik-treffen-2015-wgt') 
-        || is_page('geschenkgutschein') 
-        || is_page('wir-erwarten-euch-an-halloween-2015');
+	return isBooking();
+}
+
+function isBooking() {
+    return is_page('book-now');
 }
 
 function hide_form_values_scripts() {
@@ -87,13 +71,12 @@ add_action('wp_enqueue_scripts', 'load_gruseltour_styles');
 
 function load_jquery_ui_style_and_i18n() {
     // Let's enqueue a script only to be used on a specific page of the site
-    if (!is_page('anmeldung')) { 
+    if (!is_page('anmeldung')) {
         return;
     }
 
     wp_enqueue_style('jquery-ui-style', '//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css', ('jquery'), '1.11.4');
     wp_enqueue_style('datepicker-style', get_stylesheet_directory_uri() . '/css/datepicker.css');
-    wp_enqueue_script('jquery-ui-i18n-de', '//github.com/jquery/jquery-ui/raw/master/ui/i18n/datepicker-de.js', ('jquery'));
 }
 add_action('wp_enqueue_scripts', 'load_jquery_ui_style_and_i18n');
 
@@ -102,16 +85,8 @@ function load_font_awesome() {
 }
 add_action('wp_enqueue_scripts', 'load_font_awesome');
 
-// Exclude Posts with following id
-function bwp_gxs_exclude_posts($excluded_posts, $post_type)
-{
-	// old halloween, wgt and information page
-	return array(12,157,1356,1846);
-}
-add_filter('bwp_gxs_excluded_posts', 'bwp_gxs_exclude_posts', 10, 2);
-
 // Change form confirmation message
 function change_grunion_success_message($msg) {
-	return '<h3>' . 'Vielen Dank für deine Anfrage.<br />Wir beantworten jede Anfrage innerhalb weniger Stunden. Solltest du dennoch nach 1 Tag keine Antwort von uns erhalten, schau bitte in deinem Spam-Ordner nach.<br />Besonders bei Web.de und GMX-Mailadressen landen wir leider häufig im Spam-Ordner. ' . '</h3>';
+	return "<h3>" . "Thanks for your request.<br />We will answer all the requests within some hours. If you don't get a message from us after one day, please check your spam folder. Sometimes we end up in your spam folder." . "</h3>";
 }
 add_filter('grunion_contact_form_success_message', 'change_grunion_success_message');
