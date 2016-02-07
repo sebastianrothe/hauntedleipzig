@@ -31,8 +31,10 @@
     toLocalTimeString: function(date) {
       var hour = this.padZero(date.getHours()),
           minute = this.padZero(date.getMinutes()),
-          ampm = (hour >= 12) ? "PM" : "AM";
-      return '{0}:{1} {2}'.format(hour, minute, ampm);
+          isAmPm = (hour >= 12),
+          ampm = isAmPm ? "PM" : "AM",
+          usHour = isAmPm ? hour - 12 : hour;
+      return '{0}:{1} {2}'.format(usHour, minute, ampm);
     },
 
     parseGermanDate: function(dateString) {
@@ -48,7 +50,7 @@
             // subtract one from the month, because it's range is expected from 0-11
             month = parts[1] - 1,
             year = parts[2];
-        return new Date(day, month, year);
+        return new Date(year, month, day);
       };
 
       return createDate(dateString.split('.'));
