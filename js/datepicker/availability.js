@@ -6,8 +6,8 @@
 
         return {
             isDisabled: function(date, disabledDates) {
-                var germanDateString = gruseltourApp.util.toGermanDateString(date);
-                return jQuery.inArray(germanDateString, disabledDates) !== -1;
+                var localDateString = gruseltourApp.util.toLocalDateString(date);
+                return jQuery.inArray(localDateString, disabledDates) !== -1;
             },
 
             // weekend includes friday
@@ -23,17 +23,18 @@
         };
     };
 
+    // TODO: inject this object with locale support
     gruseltourApp.tourHTMLEntities = function () {
         return {
             disabled: {
-                title: 'Ausgebucht',
-                tooltip: 'Die Tour ist an diesem Tag schon ausgebucht.',
+                title: 'Fully booked',
+                tooltip: 'The tour is fully booked on this date.',
                 style: 'full'
             },
 
             noRegularTour: {
-                title: 'Nicht verfügbar',
-                tooltip: 'An diesem Tag findet keine reguläre Tour statt.',
+                title: 'Not available',
+                tooltip: 'The tour is not available on this date.',
                 style: 'not-available'
             }
         };

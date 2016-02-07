@@ -2,25 +2,27 @@
 (function (gruseltourApp) {
     'use strict';
 
-	gruseltourApp.dataProvider = function (useDummyData) {
+	gruseltourApp.dataProvider = function(useDummyData) {
 		// we will store our days here
 		var disabledTourDays;
 
-		var parseAndSetData = function parseData (data) {
+		var parseAndSetData = function parseData(data) {
 			disabledTourDays = gruseltourApp.util.transformDateLinesToArray(data);
 		};
 
-		var loadDummyData = function loadDummyData () {
+        // TODO: remove and mock this in a test
+		var loadDummyData = function loadDummyData() {
 			parseAndSetData('19.2.2016');
 		};
 
-		var load = (function (useDummyData) {
+		var load = (function(useDummyData) {
 			if (useDummyData) {
 				loadDummyData();
 				return;
 			}
 
-			jQuery.get('//gruseltour-leipzig.de/wordpress/wp-content/themes/gruseltour-leipzig/js/data.txt', parseData);
+            // TODO: put domain in a config object
+			jQuery.get('//hauntedleipzig.de/wordpress/wp-content/themes/hauntedleipzig/js/data.txt', parseAndSetData);
 		// run this immediately on parsing this object
 		}(useDummyData));
 

@@ -12,21 +12,21 @@
 ?>
 		<!-- Buchen Button -->
 		<?php if (!isPageWithForm()) { ?>
-		<a class="booknow-border" href="//gruseltour-leipzig.de/anmeldung">
-			<span class="booknow-text">Gruseltour hier buchen!</span>
+		<a class="booknow-border" href="//hauntedleipzig.de/book-now/">
+			<span class="booknow-text">Book tour now!</span>
 		</a>
 		<?php } ?>
 	</div><!-- #main .wrapper -->
 
 	<footer id="colophon" role="contentinfo">
 		<div class="site-info">
-			<a href="//gruseltour-leipzig.de/impressum">Impressum</a>
+			<a href="//hauntedleipzig.de/imprint/">Imprint</a>
 			&nbsp;
 			-
-			&nbsp; 
-			<a href="//gruseltour-leipzig.de/datenschutz">Datenschutz</a>
+			&nbsp;
+			<a href="//hauntedleipzig.de/privacy/">Privacy</a>
 			<br />
-			Gruseltour Leipzig made with <i class="fa fa-inverse fa-heart"></i>, <i class="fa fa-inverse fa-coffee"></i> and lots of Open Source in Leipzig.
+			Haunted Leipzig made with <i class="fa fa-inverse fa-heart"></i>, <i class="fa fa-inverse fa-coffee"></i> and lots of Open Source in Leipzig.
 			<br />
 			<span class="pagespeed">Queries: <?php echo get_num_queries(); ?> Speed: <?php timer_stop(1); ?></span>
 		</div><!-- .site-info -->

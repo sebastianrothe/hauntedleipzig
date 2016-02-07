@@ -2,8 +2,7 @@
     'use strict';
 
 	gruseltourApp.init = function (useDummyData) {
-		useDummyData = useDummyData || false;
-	  	var dataProvider = gruseltourApp.dataProvider(useDummyData),
+	  	var dataProvider = gruseltourApp.dataProvider(useDummyData || false),
 	  		dateChecker = gruseltourApp.dateChecker(dataProvider);
 
 	  	// get the 2nd inputfield
@@ -37,8 +36,8 @@
 
 			generateFooter: function (legendOptions) {
 				// TODO: refactor to support locale
-				var TEXT_LAST_REFRESHED = 'Zuletzt aktualisiert: Heute, um',
-					TEXT_LAST_REFRESHED_TIME = gruseltourApp.util.toGermanTimeString(new Date());
+				var TEXT_LAST_REFRESHED = 'Updated: Today, at',
+                    TEXT_LAST_REFRESHED_TIME = gruseltourApp.util.toLocalTimeString(new Date());
 
 				var html = '<div class="ui-datepicker-footer">';
 				var items = [];
