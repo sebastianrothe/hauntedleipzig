@@ -1,0 +1,144 @@
+/* The Gruseltour Leipzig Theme */
+
+/* Silbentrennung deaktivieren */
+.site-content article,
+.widget-area .widget {
+	word-wrap: normal !important;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-epub-hyphens: none;
+	hyphens: none;
+}
+
+/* linker und rechter Abstand verringern */
+/* 		padding: 0 40px;
+		padding: 0 2.857142857rem;
+		margin-top: 48px;
+		margin-top: 3.428571429rem;
+		margin-bottom: 48px;
+		margin-bottom: 3.428571429rem; */
+/* Minimum width of 960 pixels. */
+@media screen and (min-width: 960px) {
+	body .site {
+		padding: 0 20px !important;
+		padding: 0 1.428571428rem !important;
+		margin-top: 20px !important;
+		margin-top: 1.714285714rem !important;
+		margin-bottom: 20px !important;
+		margin-bottom: 1.714285714rem !important;
+	}
+}
+
+/* vorher 960px und 68.571428571rem */
+@media screen and (min-width: 600px) {
+	.site {
+		max-width: 1024px !important;
+		max-width: 75.571428571rem !important;
+	}
+}
+
+/* Gruseltour Styles */
+.header-image {
+ 	margin-top: 0;
+}
+
+a:focus {
+  outline: none;
+}
+
+form input {
+	font-size: 1rem;
+}
+
+/* Buchen-Button */
+.booknow-border {
+	position: fixed;
+	border: 1px solid #cdcdcd;
+	background-color: #efefef;
+	bottom: 0;
+	right: 0;
+	padding: 10px 10px 10px 12px;
+	-moz-border-radius: 2px 0 0 2px;
+	-webkit-border-radius: 2px 0 0 2px;
+	border-radius: 2px 0 0 2px;
+	-moz-box-shadow: 0 0 5px #cdcdcd;
+	-webkit-box-shadow: 0 0 5px #cdcdcd;
+	box-shadow: 0 0 5px #cdcdcd;
+	cursor: pointer;
+}
+
+.booknow-border:hover {
+	-moz-box-shadow: 0 0 20px #cdcdcd;
+	-webkit-box-shadow: 0 0 20px #cdcdcd;
+	box-shadow: 0 0 20px #cdcdcd;
+	padding-top: 10px;
+}
+
+.booknow-border .booknow-text {
+	color: #0f0f0f;
+	font-weight: bold;
+	text-decoration: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+/* mobile only */
+@media screen and (max-width: 600px) {
+	footer .site-info {
+		padding-bottom: 2em;
+	}
+
+	.buchen-div {
+		padding-left: 10px;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+hr.clear {
+    clear: both;
+    background: none;
+    visibility: hidden;
+    width: 0 !important;
+    border: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+}
+
+/* Images */
+img.alignleft, .wp-caption.alignleft {
+	border-top: 0 !important;
+}
+
+/* Team Page */
+.teamMemberImage {
+	margin-top: 0 !important;
+}
+
+.teamMemberTitle {
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.teamMemberText {
+	text-align: justify;
+}
+
+/* the paragraph with the new image should clear the float from the last left floating image */
+.teamMemberText + p {
+	clear: left;
+	padding-top: 20px;
+	margin-bottom: 0;
+}
+
+/* this is a paragraph just to clear the float, which should not be visible */
+.teamMemberImageBreakLine {
+	clear: left;
+	visibility: hidden;
+	margin-bottom: 0 !important;
+}
+
+/* Images */
+.alignleft, .wp-caption.alignleft {
+	margin-top: 0 !important;
+}
