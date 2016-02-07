@@ -65,6 +65,7 @@ form input {
 	-webkit-box-shadow: 0 0 5px #cdcdcd;
 	box-shadow: 0 0 5px #cdcdcd;
 	cursor: pointer;
+    text-decoration: none;
 }
 
 .booknow-border:hover {
@@ -72,6 +73,7 @@ form input {
 	-webkit-box-shadow: 0 0 20px #cdcdcd;
 	box-shadow: 0 0 20px #cdcdcd;
 	padding-top: 10px;
+    text-decoration: none;
 }
 
 .booknow-border .booknow-text {
