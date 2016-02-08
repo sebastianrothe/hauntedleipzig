@@ -5,8 +5,8 @@
 	  	var dataProvider = gruseltourApp.dataProvider(useDummyData || false),
 	  		dateChecker = gruseltourApp.dateChecker(dataProvider);
 
-	  	// get the 2nd inputfield
-	  	var $datepickerInjectionPoint = jQuery('#contact-form-18 input.text').eq(1);
+	  	// get the 1st inputfield
+	  	var $datepickerInjectionPoint = jQuery('#contact-form-66 input.text').eq(0);
 		if (!$datepickerInjectionPoint.length) {
 			console.log('Could not find injection point for the datepicker.');
 			return;
