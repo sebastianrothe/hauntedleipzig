@@ -30,13 +30,13 @@ function load_datepicker_scripts() {
     }
 
     // Use `get_stylesheet_directoy_uri() if your script is inside your theme or child theme.
-    wp_register_script('datepicker-util-script', get_stylesheet_directory_uri() . '/js/datepicker/util.js');
-    wp_register_script('datepicker-dataprovider-script', get_stylesheet_directory_uri() . '/js/datepicker/dataprovider.js');
-    wp_register_script('datepicker-availability-script', get_stylesheet_directory_uri() . '/js/datepicker/availability.js');
+    wp_register_script('datepicker-util-script', get_stylesheet_directory_uri() . '/js/datepicker/util.js', false, true);
+    wp_register_script('datepicker-dataprovider-script', get_stylesheet_directory_uri() . '/js/datepicker/dataprovider.js', array('datepicker-util-script'), false, true);
+    wp_register_script('datepicker-availability-script', get_stylesheet_directory_uri() . '/js/datepicker/availability.js', array('datepicker-dataprovider-script'), false, true);
 
     // Enqueue a script that has both jQuery (automatically registered by WordPress)
     // and my-script (registered earlier) as dependencies.
-    wp_enqueue_script('style-datepicker-script', get_stylesheet_directory_uri() . '/js/datepicker/style-datepicker.js', array('jquery', 'jquery-ui-datepicker', 'datepicker-dataprovider-script', 'datepicker-dataprovider-script', 'datepicker-availability-script'), true);
+    wp_enqueue_script('style-datepicker-script', get_stylesheet_directory_uri() . '/js/datepicker/style-datepicker.js', array('jquery', 'jquery-ui-datepicker', 'datepicker-availability-script'), false, true);
 
     // TODO: add noscript with dates
 }
@@ -72,17 +72,17 @@ add_action('wp_enqueue_scripts', 'load_gruseltour_styles');
 
 function load_jquery_ui_style_and_i18n() {
     // Let's enqueue a script only to be used on a specific page of the site
-    if (!is_page('anmeldung')) {
-        return;
+    if (!isBooking()) {
+       return;
     }
 
-    wp_enqueue_style('jquery-ui-style', '//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css', ('jquery'), '1.11.4');
-    wp_enqueue_style('datepicker-style', get_stylesheet_directory_uri() . '/css/datepicker.css');
+    wp_enqueue_style('jquery-style', '//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css', false, '1.11.4');
+    wp_enqueue_style('datepicker-style', get_stylesheet_directory_uri() . '/css/datepicker.css', array('jquery-style'));
 }
 add_action('wp_enqueue_scripts', 'load_jquery_ui_style_and_i18n');
 
 function load_font_awesome() {
-	wp_enqueue_style('prefix-font-awesome', get_stylesheet_directory_uri() . '/font-awesome-4.5.0/css/font-awesome.min.css', false, '4.5.0');
+	wp_enqueue_style('prefix-font-awesome', get_stylesheet_directory_uri() . '/font-awesome-4.5.0/css/font-awesome.min.css', array(), '4.5.0');
 }
 add_action('wp_enqueue_scripts', 'load_font_awesome');
 
