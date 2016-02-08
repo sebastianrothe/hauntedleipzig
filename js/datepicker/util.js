@@ -25,7 +25,7 @@
       var day = gruseltourApp.util.padZero(date.getDate()),
           month = gruseltourApp.util.padZero(date.getMonth() + 1),
           year = date.getFullYear();
-      return '{0}-{1}-{2}'.format(year, month, day);
+      return '{0}/{1}/{2}'.format(month, day, year);
     },
 
     toLocalTimeString: function(date) {
@@ -33,7 +33,7 @@
           minute = this.padZero(date.getMinutes()),
           isAmPm = (hour >= 12),
           ampm = isAmPm ? "PM" : "AM",
-          usHour = isAmPm ? hour - 12 : hour;
+          usHour = (hour > 12) ? hour - 12 : hour;
       return '{0}:{1} {2}'.format(usHour, minute, ampm);
     },
 
