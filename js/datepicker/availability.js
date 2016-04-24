@@ -7,6 +7,7 @@
         return {
             isDisabled: function(date, disabledDates) {
                 var localDateString = gruseltourApp.util.toLocalDateString(date);
+                console.log('matching ' + localDateString + ' to ' + disabledDates);
                 return jQuery.inArray(localDateString, disabledDates) !== -1;
             },
 
@@ -46,6 +47,8 @@
             htmlEntities = gruseltourApp.tourHTMLEntities(),
             noRegularTour = htmlEntities.noRegularTour,
             disabledTour = htmlEntities.disabled;
+
+        console.log('data fetched is: ' + disabledDates + ' from ' + dataProvider);
 
         return {
             isAvailable: function (date) {

@@ -7,6 +7,7 @@
 		var disabledTourDays;
 
 		var parseAndSetData = function parseData(data) {
+            console.log('finished loading data: ' + data);
 			disabledTourDays = gruseltourApp.util.transformDateLinesToArray(data);
 		};
 
@@ -17,6 +18,7 @@
 
 		var load = (function(useDummyData) {
 			if (useDummyData) {
+                console.log('Running in TEST mode.');
 				loadDummyData();
 				return;
 			}
@@ -28,6 +30,7 @@
 
 		return {
 			getData: function () {
+                console.log('data fetched is: ' + disabledTourDays);
 				return disabledTourDays;
 			}
 		};

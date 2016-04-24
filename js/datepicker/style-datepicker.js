@@ -8,7 +8,7 @@
 	  	// get the 1st inputfield
 	  	var $datepickerInjectionPoint = jQuery('#contact-form-66 input.text').eq(0);
 		if (!$datepickerInjectionPoint.length) {
-			console.log('Could not find injection point for the datepicker.');
+			console.warn('Could not find injection point for the datepicker.');
 			return;
 		}
 
