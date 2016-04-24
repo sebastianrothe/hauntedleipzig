@@ -42,24 +42,32 @@ function load_datepicker_scripts() {
 }
 add_action('wp_footer', 'load_datepicker_scripts');
 
-/**
- * change display of values after form submit
- */
-function isPageWithForm() {
-	return isBooking();
+class PageContentAwareFilter {
+    public function isPageWithForm() {
+        return isBooking();
+    }
+
+    public function isBooking() {
+        return is_page('book-now');
+    }
 }
 
-function isBooking() {
+public function isPageWithForm() {
+    return isBooking();
+}
+
+public function isBooking() {
     return is_page('book-now');
 }
 
+/**
+ * change display of values after form submit
+ */
 function hide_form_values_scripts() {
-    // Let's enqueue a script only to be used on a specific page of the site
     if (!isPageWithForm()) {
         return;
     }
 
-    // Enqueue a script that has both jQuery (automatically registered by WordPress)
     wp_enqueue_script('hide-form-values-script', get_stylesheet_directory_uri() . '/js/hide-form-values.js', array('jquery'));
 }
 add_action('wp_footer', 'hide_form_values_scripts');
@@ -82,7 +90,7 @@ function load_jquery_ui_style_and_i18n() {
 add_action('wp_enqueue_scripts', 'load_jquery_ui_style_and_i18n');
 
 function load_font_awesome() {
-	wp_enqueue_style('prefix-font-awesome', get_stylesheet_directory_uri() . '/font-awesome-4.5.0/css/font-awesome.min.css', array(), '4.5.0');
+	wp_enqueue_style('prefix-font-awesome', get_stylesheet_directory_uri() . '/font-awesome-4.6.1/css/font-awesome.min.css', array(), '4.6.1');
 }
 add_action('wp_enqueue_scripts', 'load_font_awesome');
 
