@@ -96,6 +96,6 @@ add_action('wp_enqueue_scripts', 'load_font_awesome');
 
 // Change form confirmation message
 function change_grunion_success_message($msg) {
-	return "<h3>" . "Thanks for your request.<br />We will answer all the requests within some hours. If you don't get a message from us after one day, please check your spam folder. Sometimes we end up in your spam folder." . "</h3>";
+	return "<h3>"."Thanks for your request.<br />We will answer all the requests within some hours. If you don't get a message from us after one day, please check your spam folder. Sometimes we end up in your spam folder."."</h3>"."<script>_paq.push([‘trackGoal’, 1]);</script>";
 }
 add_filter('grunion_contact_form_success_message', 'change_grunion_success_message');
