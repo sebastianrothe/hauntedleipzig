@@ -1,7 +1,7 @@
-(function(Module) {
+(function(Modules) {
     'use strict';
 
-    Module.Logging = LoggingModule;
+    Modules.Logging = LoggingModule;
     var LoggingModule = function() {
         var service = {
             getLogger: getLogger
