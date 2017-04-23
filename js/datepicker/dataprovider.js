@@ -13,7 +13,8 @@
 
         // TODO: remove and mock this in a test
 		var loadDummyData = function loadDummyData() {
-			parseAndSetData('19.2.2016');
+			var today = (new Date()).toLocaleDateString('de-de');
+			parseAndSetData(today);
 		};
 
 		var load = (function(useDummyData) {
