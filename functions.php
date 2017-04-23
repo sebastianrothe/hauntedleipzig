@@ -52,11 +52,11 @@ class PageContentAwareFilter {
     }
 }
 
-public function isPageWithForm() {
+function isPageWithForm() {
     return isBooking();
 }
 
-public function isBooking() {
+function isBooking() {
     return is_page('book-now');
 }
 
@@ -74,7 +74,7 @@ add_action('wp_footer', 'hide_form_values_scripts');
 
 function load_gruseltour_styles() {
     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/css/twentytwelve-dark.css');
-    wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/css/hauntedleipzig.css');
+    wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/css/main.css');
 }
 add_action('wp_enqueue_scripts', 'load_gruseltour_styles');
 
@@ -90,12 +90,12 @@ function load_jquery_ui_style_and_i18n() {
 add_action('wp_enqueue_scripts', 'load_jquery_ui_style_and_i18n');
 
 function load_font_awesome() {
-	wp_enqueue_style('prefix-font-awesome', get_stylesheet_directory_uri() . '/font-awesome-4.6.1/css/font-awesome.min.css', array(), '4.6.1');
+	wp_enqueue_style('prefix-font-awesome', get_stylesheet_directory_uri() . '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0');
 }
 add_action('wp_enqueue_scripts', 'load_font_awesome');
 
 // Change form confirmation message
 function change_grunion_success_message($msg) {
-	return "<h3>"."Thanks for your request.<br />We will answer all the requests within some hours. If you don't get a message from us after one day, please check your spam folder. Sometimes we end up in your spam folder."."</h3>"."<script>_paq.push([‘trackGoal’, 1]);</script>";
+	return "<h3>"."Thanks for your request.<br />We will answer all the requests within some hours. If you don't get a message from us after one day, please check your spam folder. Sometimes we end up in your spam folder."."</h3>";
 }
 add_filter('grunion_contact_form_success_message', 'change_grunion_success_message');
